@@ -5,9 +5,9 @@ require('dotenv').config();
 
 const token=process.env.TOKEN;
 app.get('/api', (req,res) => {
-    let mode = req.query('hub.mode');
-    let challenge = req.query('hub.challenge');
-    let token = req.query('hub.verify_token');
+    let mode = req.query['hub.mode'];
+    let challenge = req.query['hub.challenge'];
+    let token = req.query['hub.verify_token'];
     const mytoken = "";
     if (mode && token) {
         if (mode === 'subscribe' && token == process.env.MYTOKEN) {
