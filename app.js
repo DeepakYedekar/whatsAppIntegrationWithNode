@@ -10,7 +10,7 @@ app.get('/api', (req,res) => {
     let token = req.query('hub.verify_token');
     const mytoken = "";
     if (mode && token) {
-        if (mode === 'subscribe' && token == mytoken) {
+        if (mode === 'subscribe' && token == process.env.MYTOKEN) {
             res.status(200).send(challenge);
         } else {
             res.status(403);
