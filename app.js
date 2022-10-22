@@ -20,7 +20,7 @@ app.get('/api', (req,res) => {
 
 app.post('/api', (req, res) => {
     let body_param = req.body;
-    if(body_param.object){
+    if(body_param){
         console.log("inside body param");
         if(body_param.entry && 
             body_param.entry[0].changes && 
@@ -50,9 +50,9 @@ app.post('/api', (req, res) => {
                        "Content-Type":"application/json"
                    }
 
-               });
-
-               res.sendStatus(200);
+               }).then(response => {
+                   res.send(response);
+               })
             }else{
                 res.sendStatus(404);
             }
