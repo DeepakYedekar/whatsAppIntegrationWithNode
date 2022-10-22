@@ -16,38 +16,36 @@ app.get('/api', (req,res) => {
     }
 })
 
-// app.post('/api', (req, res) => {
-//     let body_param = req.body;
-//     console.log('its working')
-//     console.log(JSON.stringify(body_param, null, 2));
-
-//     if (body_param.object) {
-//         if (body_param.entry && body_param.entry[0].changes && 
-//             body_param.entry[0].changes[0].values.messages &&
-//             body_param.entry[0].changes[0].values.messages[0]) {
-//             let phone_no_id = body.entry.changes[0].values.metadata.phone_number_id;
-//             let from = body_param.entry[0].changes[0].values.messages[0].from;
-//             let msg_body = body_param.entry[0].changes[0].values.messages[0].text.body;
-//             axios({
-//                 method: 'POST',
-//                 url: "https://graph.facebook.com/v14.0/" + phone_no_id + "/messages?access_token=" + token,
-//                 data: {
-//                     messaging_product: 'whatsapp',
-//                     to: from,
-//                     text: {
-//                         body:"Hi...i am Deepak"
-//                     }
-//                 },
-//                 headers: {
-//                     "Context-Type":"application/json"
-//                 }
-//             })
-//             res.sendStatus(200);
-//         } else {
-//             res.sendStatus(404);
-//             }
-//     }
-// })
+app.post('/api', (req, res) => {
+    let body_param = req.body;
+    if (body_param.object) {
+        if (body_param.entry && body_param.entry[0].changes && 
+            body_param.entry[0].changes[0].values.messages &&
+            body_param.entry[0].changes[0].values.messages[0]) {
+            
+            let phone_no_id = body_param.entry[0].changes[0].value.metadata.phone_number_id;
+            let from = body_param.entry[0].changes[0].values.messages[0].from;
+            let msg_body = body_param.entry[0].changes[0].values.messages[0].text.body;
+            axios({
+                method: 'POST',
+                url: "https://graph.facebook.com/v14.0/" + phone_no_id + "/messages?access_token=" + process.env.TOKEN,
+                data: {
+                     messaging_product: "whatsapp",
+                     to: from,
+                    text: {
+                         body:"hi............"
+                     }
+                },
+                headers: {
+                    "Content-Type":"application/json"
+                }
+            })
+            res.sendStatus(200);
+        } else {
+            res.sendStatus(404);
+            }
+    }
+})
 
 
 app.get('/', (req, res) => {
