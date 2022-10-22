@@ -20,34 +20,35 @@ app.get('/api/verifyToken', (req,res) => {
 
 app.post('/api', (req, res) => {
     let body_param = req.body;
-    console.log(JSON.stringify(body_param, null, 2));
+    console.log('its working')
+    // console.log(JSON.stringify(body_param, null, 2));
 
-    if (body_param.object) {
-        if (body_param.entry && body_param.entry[0].changes && 
-            body_param.entry[0].changes[0].values.messages &&
-            body_param.entry[0].changes[0].values.messages[0]) {
-            let phone_no_id = body.entry.changes[0].values.metadata.phone_number_id;
-            let from = body_param.entry[0].changes[0].values.messages[0].from;
-            let msg_body = body_param.entry[0].changes[0].values.messages[0].text.body;
-            axios({
-                method: 'POST',
-                url: "https://graph.facebook.com/v14.0/" + phone_no_id + "/messages?access_token=" + token,
-                data: {
-                    messaging_product: 'whatsapp',
-                    to: from,
-                    text: {
-                        body:"Hi...i am Deepak"
-                    }
-                },
-                headers: {
-                    "Context-Type":"application/json"
-                }
-            })
-            res.sendStatus(200);
-        } else {
-            res.sendStatus(404);
-            }
-    }
+    // if (body_param.object) {
+    //     if (body_param.entry && body_param.entry[0].changes && 
+    //         body_param.entry[0].changes[0].values.messages &&
+    //         body_param.entry[0].changes[0].values.messages[0]) {
+    //         let phone_no_id = body.entry.changes[0].values.metadata.phone_number_id;
+    //         let from = body_param.entry[0].changes[0].values.messages[0].from;
+    //         let msg_body = body_param.entry[0].changes[0].values.messages[0].text.body;
+    //         axios({
+    //             method: 'POST',
+    //             url: "https://graph.facebook.com/v14.0/" + phone_no_id + "/messages?access_token=" + token,
+    //             data: {
+    //                 messaging_product: 'whatsapp',
+    //                 to: from,
+    //                 text: {
+    //                     body:"Hi...i am Deepak"
+    //                 }
+    //             },
+    //             headers: {
+    //                 "Context-Type":"application/json"
+    //             }
+    //         })
+    //         res.sendStatus(200);
+    //     } else {
+    //         res.sendStatus(404);
+    //         }
+    // }
 })
 
 
