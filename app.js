@@ -4,7 +4,7 @@ const app = express();
 require('dotenv').config();
 
 const token=process.env.TOKEN;
-app.get('/api/verifyToken', (req,res) => {
+app.get('/api', (req,res) => {
     let mode = req.query['hub.mode'];
     let challenge = req.query['hub.challenge'];
     let token = req.query['hub.verify_token'];
