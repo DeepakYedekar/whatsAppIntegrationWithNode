@@ -18,7 +18,7 @@ app.get('/api', (req,res) => {
     }
 })
 
-app.post('/api', (req, res) => {
+app.post('/api',async (req, res) => {
     res.setTimeout(500000);
     let body_param = req.body;
     if(body_param){
@@ -36,7 +36,7 @@ app.post('/api', (req, res) => {
                console.log("from "+from);
                console.log("boady param "+msg_body);
 
-               axios({
+              await axios({
                    method:"POST",
                    url:"https://graph.facebook.com/v15.0/"+phone_number_id+"/messages?access_token="+token,
                    data:{
@@ -51,9 +51,8 @@ app.post('/api', (req, res) => {
                        "Content-Type":"application/json"
                    }
 
-               }).then(response => {
-                   res.send(response);
-               })
+              })
+            res.send("hello from server");
             }else{
                 res.sendStatus(404);
             }
