@@ -18,7 +18,7 @@ app.get('/api', (req,res) => {
     }
 })
 
-app.post('/api/receive', (req, res) => {
+app.post('/api', (req, res) => {
     let body_param = req.body;
     console.log('its working')
     // console.log(JSON.stringify(body_param, null, 2));
