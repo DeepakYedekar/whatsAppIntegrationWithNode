@@ -19,7 +19,7 @@ app.get('/api', (req,res) => {
 })
 
 app.post('/api', (req, res) => {
-    req.setTimeout(500000);
+    res.setTimeout(500000);
     let body_param = req.body;
     if(body_param){
         console.log("inside body param");
