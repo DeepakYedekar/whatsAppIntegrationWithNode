@@ -3,7 +3,6 @@ const axios = require('axios');
 const app = express();
 require('dotenv').config();
 
-const token=process.env.TOKEN;
 app.get('/api', (req,res) => {
     let mode = req.query['hub.mode'];
     let challenge = req.query['hub.challenge'];
