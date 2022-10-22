@@ -29,20 +29,21 @@ app.post('/api', (req, res) => {
             axios({
                 method: 'POST',
                 url: "https://graph.facebook.com/v14.0/" + phone_no_id + "/messages?access_token=" + process.env.TOKEN,
-                data: {
-                     messaging_product: "whatsapp",
-                     to: from,
-                    text: {
-                         body:"hi............"
-                     }
-                },
                 headers: {
-                    "Content-Type":"application/json"
+                    'Content-Type': 'application/json'
+                },
+                data: {
+                     "messaging_product": "whatsapp",
+                     "to": from,
+                    "text": {
+                         "body":"hi............"
+                     }
                 }
+            }).then((response) => {
+                res.status(200).send(response.data);
             })
-            res.sendStatus(200);
         } else {
-            res.sendStatus(404);
+            res.status(400).send('error');
             }
     }
 })
