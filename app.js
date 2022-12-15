@@ -11,7 +11,7 @@ app.post('/send', (req, res) => {
     } catch (err) {
         res.send('err form server');
     }
-})
+})``
 
 app.get("/webhook", (req, res) => {
     let mode = req.query["hub.mode"];

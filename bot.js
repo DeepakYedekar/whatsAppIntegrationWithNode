@@ -11,7 +11,7 @@ async function sendBotMessage(number, message) {
                 "body": "bye"
             }
         }
-        await sendMessage(data);
+        await sendMessage(sendText);
     } else if (message === "") {
         let sendTemplate = {
             "messaging_product": "whatsapp",
